@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/splash_screen.dart';
 import 'screens/home_screen.dart';
-//import 'screens/form_screens.dart';
+import 'screens/form_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
       routes: {
         '/home': (context) => HomeScreen(),
+        '/form': (context) => FormScreen(),
       },
     );
   }
