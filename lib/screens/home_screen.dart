@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'lib/assets/images/camale.jpg', // Caminho para a imagem local
+              'lib/assets/images/café.png', // Caminho para a imagem local
               width: 150,
               height: 100,
             ),
