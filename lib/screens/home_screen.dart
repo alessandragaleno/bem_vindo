@@ -6,29 +6,54 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
-        actions: [
-          PopupMenuButton<String>(
-            onSelected: (String result){
-              if(result == 'Formulário'){
-                Navigator.pushNamed(context, '/form');
-              }
-            },
-            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-              PopupMenuItem<String>(
-                value: 'Formulário',
-                child: Text('Ir para o formulário'),  
+        centerTitle: true, // true deve estar em minúsculas
+        backgroundColor: Color.fromARGB(255, 67, 123, 235),
+        titleTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+        ),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.menu),
+            color: Colors.white,
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
               ),
-              PopupMenuItem<String>(
-                value: 'Compras',
-                child: Text('Compras'),
+              child: Text(
+                'Menu Lateral',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
               ),
-              PopupMenuItem<String>(
-                value: 'Contato',
-                child: Text('Contato'),
-              ),
-            ],
             ),
-        ],
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Página Inicial'),
+              onTap: () {
+                // Ação ao clicar
+                Navigator.pop(context); // fecha o drawer
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Configurações'),
+              onTap: () {
+                // Ação ao clicar
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
       body: Center(
         child: Column(
