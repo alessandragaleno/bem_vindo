@@ -4,10 +4,12 @@ import 'screens/home_screen.dart';
 import 'screens/form_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
       routes: {
         '/home': (context) => HomeScreen(),
         '/form': (context) => FormScreen(),

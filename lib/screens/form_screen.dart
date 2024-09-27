@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class FormScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
+  FormScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Formulário'),
+        title: const Text('Formulário'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -20,9 +22,9 @@ class FormScreen extends StatelessWidget {
                 width: 150,
                 height: 150,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Campo 1'),
+                decoration: const InputDecoration(labelText: 'Campo 1'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, preencha este campo';
@@ -31,7 +33,7 @@ class FormScreen extends StatelessWidget {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Campo 2'),
+                decoration: const InputDecoration(labelText: 'Campo 2'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, preencha este campo';
@@ -40,7 +42,7 @@ class FormScreen extends StatelessWidget {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Campo 3'),
+                decoration: const InputDecoration(labelText: 'Campo 3'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, preencha este campo';
@@ -48,16 +50,16 @@ class FormScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              SizedBox(height: 20), // Adicionei um SizedBox para separar o botão
+              const SizedBox(height: 20), // Adicionei um SizedBox para separar o botão
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Processando dados')),
+                      const SnackBar(content: Text('Processando dados')),
                     );
                   }
                 },
-                child: Text('Enviar'),
+                child: const Text('Enviar'),
               ),
             ],
           ),
