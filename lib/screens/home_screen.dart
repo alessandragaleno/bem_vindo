@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart'; //
 
 class HomeScreen extends StatelessWidget {
+  // Lista de imagens para o carrossel
+  final List<String> carouselImagens = [
+    'lib/assets/images/carrossel1.jpg',
+    'lib/assets/images/carrossel2.jpg',
+    'lib/assets/images/carrossel3.jpg',
+    // Adicionar mais imagens conforme necessário
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -155,6 +164,43 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
+            // Carrossel Adicionado Abaixo do Botão
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  height: 200.0, // Altura do carrossel
+                  autoPlay: true, // Auto-play das imagens
+                  enlargeCenterPage: true, // ampliar a página central
+                  aspectRatio: 16 / 9,
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enableInfiniteScroll: true,
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  viewportFraction: 0.8,
+                ),
+                items: carouselImagens.map((imagePath) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 5.0),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Image.asset(
+                            imagePath,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }).toList(),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
